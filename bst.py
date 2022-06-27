@@ -74,6 +74,9 @@ class BST:
         return True
 
     def FinMinMax(self, FromNode, FindMax):
+        if FromNode is None:
+            return None
+
         if FindMax == False:
             if FromNode.LeftChild == None:
                 return FromNode
