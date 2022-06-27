@@ -29,10 +29,21 @@ class BSTTest(unittest.TestCase):
         self.assertEqual(result5.NodeHasKey, False)
         self.assertEqual(result5.ToLeft, False)
 
+    def testAdditionAddKeyValue(self):
+
+        root = BSTNode(1, 1, None)
+        testObject = BST(root)
+        self.assertEqual(testObject.Count(),1)
+        self.assertEqual(testObject.DeleteNodeByKey(1),True)
+        self.assertEqual(testObject.Count(),0)
+        self.assertIsNone(testObject.Root)
+        self.assertEqual(testObject.AddKeyValue(1,1),True)
+        self.assertEqual(testObject.Root.NodeKey,1)
 
     def testAddKeyValue(self):
         root = BSTNode(1, 1, None)
         testObject = BST(root)
+
         self.assertEqual(testObject.AddKeyValue(3,3), True)
         self.assertIsNotNone(testObject.Root.RightChild)
 
