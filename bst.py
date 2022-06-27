@@ -62,7 +62,7 @@ class BST:
         bstFind = self.FindNodeByKey(key)
         if bstFind.Node is None:
             self.Root = BSTNode(key, val, None)
-            self.Count = 1
+            self.NodeCount = 1
             return True
         if bstFind.NodeHasKey == True:
             return False
