@@ -125,3 +125,74 @@ class BSTTest(unittest.TestCase):
         self.assertEqual(testObject.Count(),1)
         testObject.DeleteNodeByKey(1)
         self.assertEqual(testObject.Count(),0)
+
+    def testBFS(self):
+        root = BSTNode(1,1,None)
+        testObject = BST(root)
+        testObject.AddKeyValue(3,3)
+        testObject.AddKeyValue(-1,-1)
+
+        result = testObject.WideAllNodes()
+
+        self.assertEqual(len(result),3)
+        self.assertEqual(result[0].NodeKey,1)
+        self.assertEqual(result[1].NodeKey,-1)
+        self.assertEqual(result[2].NodeKey,3)
+
+    def testDFSPreOrder(self):
+        root = BSTNode(1,1,None)
+        testObject = BST(root)
+        testObject.AddKeyValue(3,3)
+        testObject.AddKeyValue(-1,-1)
+
+        result = testObject.DeepAllNodes(2)
+
+        self.assertEqual(len(result),3)
+        self.assertEqual(result[0].NodeKey,1)
+        self.assertEqual(result[1].NodeKey,-1)
+        self.assertEqual(result[2].NodeKey,3)
+
+    def testDFSPostOrder(self):
+        root = BSTNode(1,1,None)
+        testObject = BST(root)
+        testObject.AddKeyValue(3,3)
+        testObject.AddKeyValue(-1,-1)
+
+        result = testObject.DeepAllNodes(1)
+
+        self.assertEqual(len(result),3)
+        self.assertEqual(result[0].NodeKey,-1)
+        self.assertEqual(result[1].NodeKey,3)
+        self.assertEqual(result[2].NodeKey,1)
+
+    def testDFSInOrder(self):
+        root = BSTNode(1,1,None)
+        testObject = BST(root)
+        testObject.AddKeyValue(3,3)
+        testObject.AddKeyValue(-1,-1)
+
+        result = testObject.DeepAllNodes(0)
+
+        self.assertEqual(len(result),3)
+        self.assertEqual(result[0].NodeKey,-1)
+        self.assertEqual(result[1].NodeKey,1)
+        self.assertEqual(result[2].NodeKey,3)
+
+    def testEmptyDFS(self):
+        root = BSTNode(1,1,None)
+        testObject = BST(root)
+        result = testObject.DeepAllNodes(0)
+        self.assertEqual(len(result), 1)
+
+        testObject.DeleteNodeByKey(1)
+
+        result = testObject.DeepAllNodes(0)
+        self.assertEqual(len(result),0)
+
+        result = testObject.WideAllNodes()
+        self.assertEqual(len(result),0)
+
+        testObject.AddKeyValue(7,7)
+        result = testObject.WideAllNodes()
+        self.assertEqual(len(result),1)
+        self.assertEqual(result[0].NodeKey,7)

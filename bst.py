@@ -151,3 +151,50 @@ class BST:
 
     def Count(self):
         return self.NodeCount
+
+    def WideAllNodes(self):
+        ans = []
+        if self.Root is None:
+            return ans
+        queue = [self.Root]
+        while queue:
+            current = queue.pop(0)
+            ans.append(current)
+            if current.LeftChild:
+                queue.append(current.LeftChild)
+            if current.RightChild:
+                queue.append(current.RightChild)
+        return ans
+
+    def postOrder(self, node, ans):
+        if node is None:
+            return
+        self.postOrder(node.LeftChild,ans)
+        self.postOrder(node.RightChild,ans)
+        ans.append(node)
+
+    def preOrder(self, node, ans):
+        if node is None:
+            return
+        ans.append(node)
+        self.postOrder(node.LeftChild,ans)
+        self.postOrder(node.RightChild,ans)
+
+    def inOrder(self, node, ans):
+        if node is None:
+            return
+        self.postOrder(node.LeftChild,ans)
+        ans.append(node)
+        self.postOrder(node.RightChild,ans)
+
+    def DeepAllNodes(self, order):
+        ans = []
+        if order == 0:
+            self.inOrder(self.Root, ans)
+        if order == 1:
+            self.postOrder(self.Root, ans)
+        if order == 2:
+            self.preOrder(self.Root,ans)
+        return ans
+
+
