@@ -177,15 +177,15 @@ class BST:
         if node is None:
             return
         ans.append(node)
-        self.postOrder(node.LeftChild,ans)
-        self.postOrder(node.RightChild,ans)
+        self.preOrder(node.LeftChild,ans)
+        self.preOrder(node.RightChild,ans)
 
     def inOrder(self, node, ans):
         if node is None:
             return
-        self.postOrder(node.LeftChild,ans)
+        self.inOrder(node.LeftChild,ans)
         ans.append(node)
-        self.postOrder(node.RightChild,ans)
+        self.inOrder(node.RightChild,ans)
 
     def DeepAllNodes(self, order):
         ans = []
