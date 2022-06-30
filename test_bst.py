@@ -1,7 +1,6 @@
 
 import unittest
 
-
 from bst import BSTNode, BSTFind, BST
 
 class BSTTest(unittest.TestCase):
