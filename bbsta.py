@@ -3,8 +3,12 @@ def GenerateBBSTArray(a):
         return []
     a.sort()
     tree_size = len(a)* 2 - 1
-    ans = [None] * tree_size
-    generateBBSTArray(a, ans, 0, 0, len(a) - 1)
+    tree = [None] * tree_size
+    generateBBSTArray(a, tree, 0, 0, len(a) - 1)
+    ans = []
+    for value in tree:
+        if value is not None:
+            ans.append(value)
     return ans
 
 def generateBBSTArray(initial_array, result_array, index, left, right):

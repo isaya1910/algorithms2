@@ -12,7 +12,7 @@ class BBSTATest(unittest.TestCase):
 
         result = GenerateBBSTArray(testList)
         print(result)
-        self.assertEqual(len(result), 15)
+        self.assertEqual(len(result), 8)
         self.assertEqual(testList[0],-5)
 
         self.assertEqual(result[0],6)
@@ -21,20 +21,13 @@ class BBSTATest(unittest.TestCase):
         self.assertEqual(result[3],-5)
         self.assertEqual(result[4], 3)
 
-        testList2 = [18, 10]
-        result = GenerateBBSTArray(testList2)
-        self.assertEqual(result[0],10)
-        self.assertEqual(result[2], 18)
-
-        result = GenerateBBSTArray([])
-        self.assertEqual(len(result),0)
 
     def test2(self):
 
         testList2 = [18, 10]
         result = GenerateBBSTArray(testList2)
         self.assertEqual(result[0],10)
-        self.assertEqual(result[2], 18)
+        self.assertEqual(result[1], 18)
 
         result = GenerateBBSTArray([])
         self.assertEqual(len(result),0)
