@@ -51,3 +51,11 @@ class aBSTTest(unittest.TestCase):
 
         self.assertEqual(testObject.AddKey(2),-1)
         self.assertEqual(testObject.AddKey(1),0)
+
+    def testEdgeCases2(self):
+        testObject = aBST(0)
+        self.assertEqual(testObject.AddKey(4),0)
+        self.assertEqual(testObject.AddKey(8),-1)
+
+
+
