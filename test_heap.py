@@ -5,11 +5,12 @@ from heap import Heap
 class HeapTest(unittest.TestCase):
     def testAdd(self):
         testObject = Heap()
-        testObject.MakeHeap([],3)
+        testObject.MakeHeap([12,3,4,9],3)
 
-        testObject.Add(7)
-        testObject.Add(9)
-        testObject.Add(12)
 
-        self.assertEqual(testObject.HeapArray[0], 12)
+        self.assertEqual(testObject.GetMax(), 12)
+        self.assertEqual(testObject.GetMax(), 9)
+        self.assertEqual(testObject.GetMax(), 4)
+        self.assertEqual(testObject.GetMax(), 3)
+        self.assertEqual(testObject.GetMax(), -1)
 
