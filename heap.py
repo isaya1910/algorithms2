@@ -5,7 +5,7 @@ class Heap:
         self.heap_size = 0
 
     def MakeHeap(self, a, depth):
-        tree_size = pow(2,depth + 1) - 1
+        tree_size = pow(2,depth + 1)
         self.HeapArray = [None] * tree_size
         for value in a:
             self.Add(value)
