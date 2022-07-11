@@ -74,3 +74,47 @@ class SimpleTreeNodeTest(unittest.TestCase):
 
         self.assertEqual(testObject.Count(), 21)
         self.assertEqual(testObject.LeafCount(), 20)
+
+    def testEvenTrees(self):
+
+        parentNode = SimpleTreeNode(1, None)
+
+        testObject = SimpleTree(parentNode)
+
+        child6 = SimpleTreeNode(6, parentNode)
+        testObject.AddChild(parentNode, child6)
+
+        child3 = SimpleTreeNode(3, parentNode)
+        testObject.AddChild(parentNode,child3)
+
+        child2 = SimpleTreeNode(2, parentNode)
+        testObject.AddChild(parentNode,child2)
+
+        child8 = SimpleTreeNode(8, child6)
+        testObject.AddChild(child6, child8)
+
+        child9 = SimpleTreeNode(9, child8)
+        testObject.AddChild(child8, child9)
+
+        child10 = SimpleTreeNode(10, child8)
+        testObject.AddChild(child8, child10)
+
+        child4 = SimpleTreeNode(4, child3)
+        testObject.AddChild(child3, child4)
+
+        child5 = SimpleTreeNode(5, child2)
+        testObject.AddChild(child2, child5)
+
+        child7 = SimpleTreeNode(7, child2)
+        testObject.AddChild(child2, child7)
+
+        actual = testObject.EvenTrees()
+
+        self.assertEqual(len(actual), 4)
+        self.assertEqual(actual[0], parentNode)
+        self.assertEqual(actual[1], child6)
+        self.assertEqual(actual[2], parentNode)
+        self.assertEqual(actual[3], child3)
+
+
+

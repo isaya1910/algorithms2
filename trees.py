@@ -54,6 +54,22 @@ class SimpleTree:
     def LeafCount(self):
         return self.countLeafs(self.Root)
 
+    def EvenTrees(self):
+        ans = []
+        self.countChildren(self.Root, ans)
+        return ans
+
+    def countChildren(self, node, ans):
+        count  = 0
+        for child in node.Children:
+            subtreeCount = self.countChildren(child, ans)
+            if subtreeCount % 2 == 0:
+                ans.append(node)
+                ans.append(child)
+                continue
+            count += subtreeCount
+        return count + 1
+
     def countLeafs(self, node):
         if len(node.Children) == 0:
             return 1
