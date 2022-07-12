@@ -2,7 +2,7 @@ class Vertex:
 
     def __init__(self, val):
         self.Value = val
-
+        self.Hit = False
 class SimpleGraph:
 
     def __init__(self, size):
@@ -34,3 +34,35 @@ class SimpleGraph:
     def RemoveEdge(self, v1, v2):
         self.m_adjacency[v1][v2] = 0
         self.m_adjacency[v2][v1] = 0
+
+    def DepthFirstSearch(self, VFrom, VTo):
+        stack = []
+        for v in self.vertex:
+            if v is not None:
+                v.Hit = False
+
+        vStart  = self.vertex[VFrom]
+        stack.append(vStart)
+
+        while len(stack) !=0:
+            ver = stack[-1]
+            vi = self.vertex.index(ver)
+            ver.Hit = True
+            for i in range(self.max_vertex):
+                if self.m_adjacency[vi][i] == 1 and i == VTo:
+                    stack.append(self.vertex[i])
+                    return stack
+            isFind = False
+            for i in range(self.max_vertex):
+                if self.m_adjacency[vi][i] == 1 and self.vertex[i].Hit == False:
+                    stack.append(self.vertex[i])
+                    isFind = True
+            if isFind == False:
+                stack.pop()
+        return stack
+
+
+
+
+
+
