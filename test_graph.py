@@ -72,3 +72,39 @@ class GraphTest(unittest.TestCase):
         actual = testObject.DepthFirstSearch(2,3)
 
         self.assertEqual(len(actual),0)
+
+
+    def testDFS2(self):
+        testObject = SimpleGraph(5)
+        testObject.AddVertex(1)
+        testObject.AddVertex(2)
+        testObject.AddVertex(3)
+        testObject.AddVertex(4)
+        testObject.AddVertex(5)
+
+        testObject.AddEdge(0, 1)
+        testObject.AddEdge(0, 2)
+        testObject.AddEdge(0, 3)
+
+        testObject.AddEdge(1, 3)
+
+        testObject.AddEdge(2, 3)
+
+        testObject.AddEdge(3, 3)
+
+        testObject.AddEdge(3, 4)
+
+        actual = testObject.DepthFirstSearch(0,4)
+
+        self.assertEqual(len(actual), 3)
+
+
+
+
+
+
+
+
+
+
+

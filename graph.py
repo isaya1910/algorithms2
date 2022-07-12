@@ -37,27 +37,29 @@ class SimpleGraph:
 
     def DepthFirstSearch(self, VFrom, VTo):
         stack = []
-        ans = []
         for v in self.vertex:
             if v is not None:
                 v.Hit = False
 
         vStart  = self.vertex[VFrom]
         stack.append(vStart)
-        ans.append(vStart)
-
 
         while len(stack) !=0:
-            ver = stack.pop()
+            ver = stack[-1]
             vi = self.vertex.index(ver)
             ver.Hit = True
 
+            isFind = False
             for i in range(self.max_vertex):
                 if self.m_adjacency[vi][i] == 1 and self.vertex[i].Hit == False:
                     stack.append(self.vertex[i])
-                    ans.append(self.vertex[i])
+                    isFind = True
                     if i == VTo:
-                        return ans
+                        return stack
+                    break
+
+            if isFind == False:
+                stack.pop()
 
         return stack
 
