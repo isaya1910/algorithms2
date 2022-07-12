@@ -48,15 +48,16 @@ class SimpleGraph:
             ver = stack[-1]
             vi = self.vertex.index(ver)
             ver.Hit = True
+
+            isFind = False
             for i in range(self.max_vertex):
                 if self.m_adjacency[vi][i] == 1 and i == VTo:
                     stack.append(self.vertex[i])
                     return stack
-            isFind = False
-            for i in range(self.max_vertex):
                 if self.m_adjacency[vi][i] == 1 and self.vertex[i].Hit == False:
                     stack.append(self.vertex[i])
                     isFind = True
+
             if isFind == False:
                 stack.pop()
         return stack

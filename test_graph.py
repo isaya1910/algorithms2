@@ -68,3 +68,7 @@ class GraphTest(unittest.TestCase):
         self.assertEqual(actual[1].Value, 10)
 
         self.assertEqual(actual[2].Value, 12)
+
+        actual = testObject.DepthFirstSearch(2,3)
+
+        self.assertEqual(len(actual),0)
