@@ -92,8 +92,24 @@ class SimpleGraph:
 
         return stack
 
+    def WeakVertices(self):
+        # возвращает список узлов вне треугольников
 
+        strongVertices = [False]* self.max_vertex
+        for i in range(self.max_vertex):
+            if strongVertices[i] == True:
+                continue
+            for j in range(self.max_vertex):
+                if self.m_adjacency[i][j] == 1 and i!=j:
+                    for z in range(self.max_vertex):
+                        if self.m_adjacency[j][z] == 1 and self.m_adjacency[i][z] == 1 and i!=j and i!=z and j!=z:
+                            strongVertices[i] = True
+                            strongVertices[j] = True
+                            strongVertices[z] = True
 
-
-
+        edges = []
+        for i in range(self.max_vertex):
+            if strongVertices[i] == False:
+                edges.append(self.vertex[i])
+        return edges
 
