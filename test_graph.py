@@ -96,13 +96,41 @@ class GraphTest(unittest.TestCase):
 
         actual = testObject.DepthFirstSearch(0,4)
 
-        self.assertEqual(len(actual), 3)
+        self.assertEqual(len(actual), 4)
 
 
 
+    def testBFS(self):
+         testObject = SimpleGraph(5)
+         testObject.AddVertex(1)
+         testObject.AddVertex(2)
+         testObject.AddVertex(3)
+         testObject.AddVertex(4)
+         testObject.AddVertex(5)
 
+         testObject.AddEdge(0, 1)
+         testObject.AddEdge(0, 2)
+         testObject.AddEdge(0, 3)
 
+         testObject.AddEdge(1, 3)
 
+         testObject.AddEdge(2, 3)
+
+         testObject.AddEdge(3, 3)
+
+         testObject.AddEdge(3, 4)
+
+         actual = testObject.BreadthFirstSearch(0,4)
+
+         self.assertEqual(len(actual), 3)
+         self.assertEqual(actual[0].Value, 1)
+         self.assertEqual(actual[1].Value, 4)
+         self.assertEqual(actual[2].Value, 5)
+
+         testObject.RemoveEdge(0,1)
+         testObject.RemoveEdge(1,3)
+         actual = testObject.BreadthFirstSearch(1,2)
+         self.assertEqual(len(actual),0)
 
 
 

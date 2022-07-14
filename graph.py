@@ -35,6 +35,35 @@ class SimpleGraph:
         self.m_adjacency[v1][v2] = 0
         self.m_adjacency[v2][v1] = 0
 
+
+    def clearVisited(self):
+        for v in self.vertex:
+            if v is not None:
+                v.Hit = False
+
+    def BreadthFirstSearch(self, VFrom, VTo):
+        path = []
+        queue = []
+        self.clearVisited()
+        vStart = self.vertex[VFrom]
+        path.append(vStart)
+
+        queue.append(path.copy())
+
+        while len(queue) != 0:
+            path = queue.pop(0)
+            ver = path[-1]
+            vi = self.vertex.index(ver)
+            ver.Hit = True
+            if vi == VTo:
+                return path
+            for i in range(self.max_vertex):
+                if self.m_adjacency[vi][i] == 1 and self.vertex[i].Hit == False:
+                    newPath = path.copy()
+                    newPath.append(self.vertex[i])
+                    queue.append(newPath)
+        return []
+
     def DepthFirstSearch(self, VFrom, VTo):
         stack = []
         for v in self.vertex:
